@@ -1,0 +1,17 @@
+p {
+  font-family: Lato;
+}
+
+.home {
+  font-size: 1.5rem;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mob {
+  color: #8c1616;
+  text-decoration: underline;
+}
