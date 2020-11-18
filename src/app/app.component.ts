@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy {
   skadi = new Date('2020-11-16 18:10:00:00');
   skadiNextSpawn: Date = new Date();
   bron = new Date('2020-11-16 18:50:00:00');
   bronNextSpawn: Date = new Date();
   timeTo: any;
-  // offset = new Date().getTimezoneOffset();
   diasLst: any[] = [];
   diasBronLst: any[] = [];
 
@@ -56,14 +55,17 @@ export class AppComponent implements OnInit{
     this.diasBronLst = this.crearDias(this.bron);
     this.skadiNextSpawn = this.nextSpawn('skadi');
     this.bronNextSpawn = this.nextSpawn('bron');
-    setInterval(() => {
+
+    setTimeout(() => {
       const secondsSkadi = Math.abs(-this.skadiNextSpawn - -new Date()) / 1000;
       const secondsBron = Math.abs(-this.bronNextSpawn - -new Date()) / 1000;
       this.timeTo = {
         skadi: secondsSkadi,
         bron: secondsBron
       };
-    }, 1000);
+    }, 0);
   }
+
+  ngOnDestroy(): any {}
 
 }
